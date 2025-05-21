@@ -1,0 +1,417 @@
+/* Google Font Import */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
+
+/* Base Styles */
+:root {
+  --primary-color: #4a00e0;
+  --secondary-color: #8e2de2;
+  --accent-color: #00d2ff;
+  --text-color: #ffffff;
+  --background-dark: #121212;
+  --background-light: #1e1e1e;
+  --success-color: #00e676;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--background-dark);
+  overflow-x: hidden;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Container Styles */
+.launch-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.launch-container.loaded {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Particle Background */
+.particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.particle {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  animation: float 15s infinite linear;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-1000px) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+/* Create particles at random positions */
+.particle:nth-child(1) {
+  top: 10%;
+  left: 20%;
+  width: 5px;
+  height: 5px;
+  animation-delay: 0s;
+  animation-duration: 15s;
+}
+
+.particle:nth-child(2) {
+  top: 25%;
+  left: 80%;
+  width: 3px;
+  height: 3px;
+  animation-delay: 2s;
+  animation-duration: 12s;
+}
+
+/* Add more particles as needed... */
+
+/* Content Styles */
+.content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 800px;
+  width: 100%;
+  transition: all 0.5s ease;
+}
+
+.content.launching {
+  transform: scale(0.9);
+  opacity: 0.5;
+  filter: blur(2px);
+}
+
+/* Title Styles */
+.title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.letter {
+  display: inline-block;
+  transform: translateY(20px);
+  opacity: 0;
+  animation: letterAppear 0.5s forwards;
+}
+
+@keyframes letterAppear {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Create staggered animation for each letter */
+.letter:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.letter:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.letter:nth-child(3) {
+  animation-delay: 0.3s;
+}
+/* Continue for all letters... */
+
+.subtitle {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  color: var(--accent-color);
+  margin-bottom: 4rem;
+  opacity: 0;
+  animation: fadeIn 1s 1.5s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Logo Styles */
+.logo-container {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  margin: 2rem auto;
+}
+
+.logo-image {
+  width: 70vh;
+  height: 70vh;
+  object-fit: contain;
+  border-radius: 50%;
+  position: absolute;
+  top: -130px;
+  right: -90px;
+  z-index: 2;
+}
+
+.logo-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  animation: rotate 20s linear infinite;
+}
+
+.outer-ring {
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border-top-color: var(--primary-color);
+  border-bottom-color: var(--secondary-color);
+  animation-delay: 0.5s;
+}
+
+.middle-ring {
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  border-left-color: var(--accent-color);
+  border-right-color: var(--success-color);
+}
+
+.inner-ring {
+  top: -30px;
+  left: -30px;
+  right: -30px;
+  bottom: -30px;
+  border-top-color: var(--secondary-color);
+  border-bottom-color: var(--primary-color);
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Launch Button Styles */
+.launch-section {
+  margin-top: 2rem;
+  opacity: 0;
+  animation: fadeIn 1s 2s forwards;
+}
+
+.by-line {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.launch-button {
+  position: relative;
+  padding: 1.2rem 3rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(
+    45deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.launch-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.launch-button:active {
+  transform: translateY(1px);
+}
+
+.launch-button:disabled {
+  background: linear-gradient(45deg, #555, #777);
+  cursor: not-allowed;
+}
+
+.button-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    45deg,
+    var(--secondary-color),
+    var(--accent-color)
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.launch-button:hover .button-overlay {
+  opacity: 1;
+}
+
+.launching-text {
+  display: inline-block;
+  position: relative;
+}
+
+.launching-text::after {
+  content: "...";
+  position: absolute;
+  animation: dots 1.5s infinite steps(4, end);
+}
+
+@keyframes dots {
+  0%,
+  20% {
+    content: ".";
+  }
+  40% {
+    content: "..";
+  }
+  60%,
+  100% {
+    content: "...";
+  }
+}
+
+/* Countdown Styles */
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 3rem;
+  opacity: 0;
+  animation: fadeIn 1s 2.5s forwards;
+}
+
+.countdown-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.countdown-number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  background: rgba(0, 0, 0, 0.3);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  min-width: 70px;
+  display: inline-block;
+  text-align: center;
+}
+
+.countdown-label {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Launch Overlay Animation */
+.launch-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  opacity: 0;
+  animation: fadeIn 0.5s forwards;
+}
+
+.launch-rocket {
+  font-size: 5rem;
+  animation: launchRocket 1.5s ease-out forwards;
+}
+
+@keyframes launchRocket {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) scale(0.5);
+    opacity: 0;
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .logo-container {
+    width: 200px;
+    height: 200px;
+  }
+
+  .countdown {
+    gap: 1rem;
+  }
+
+  .countdown-number {
+    font-size: 1.5rem;
+    min-width: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .countdown {
+    flex-wrap: wrap;
+  }
+
+  .countdown-item {
+    width: 45%;
+    margin-bottom: 1rem;
+  }
+}
