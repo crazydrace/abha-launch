@@ -210,8 +210,8 @@ body {
   object-fit: contain;
   border-radius: 50%;
   position: absolute;
-  top: -150px;
-  right: -110px;
+  top: -120px;
+  right: -100px;
   z-index: 2;
 }
 
