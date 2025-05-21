@@ -14,7 +14,7 @@ function LaunchingPage() {
     // Optional: Add delay before actual navigation
     setTimeout(() => {
       window.location.href = "https://abha-web.vercel.app";
-    }, 1500);
+    }, 3000); // Increased to allow confetti animation to complete
   };
 
   return (
@@ -71,6 +71,25 @@ function LaunchingPage() {
           </button>
         </div>
       </div>
+
+      {isLaunching && (
+        <div className="confetti-container">
+          {Array.from({ length: 100 }).map((_, i) => (
+            <div
+              key={i}
+              className="confetti"
+              style={{
+                left: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 2}s`,
+                backgroundColor: `hsl(${Math.random() * 360}, 100%, 50%)`,
+                width: `${Math.random() * 10 + 5}px`,
+                height: `${Math.random() * 10 + 5}px`,
+                transform: `rotate(${Math.random() * 360}deg)`,
+              }}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 }

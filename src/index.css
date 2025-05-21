@@ -160,6 +160,42 @@ body {
   }
 }
 
+/* confetti animation */
+/* Confetti Animation */
+.confetti-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  opacity: 0;
+  animation: confetti-fall 3s ease-in forwards;
+}
+
+@keyframes confetti-fall {
+  0% {
+    opacity: 1;
+    transform: translateY(-100px) rotate(0deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(100vh) rotate(720deg);
+  }
+}
+
+/* Adjust the launch overlay to work with confetti */
+.launch-overlay {
+  background: rgba(0, 0, 0, 0.6);
+}
 /* Logo Styles */
 .logo-container {
   position: relative;
