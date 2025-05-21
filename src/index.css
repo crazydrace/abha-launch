@@ -211,7 +211,7 @@ body {
   border-radius: 50%;
   position: absolute;
   top: -250px;
-  right: -250px;
+  right: -150px;
   z-index: 2;
 }
 
